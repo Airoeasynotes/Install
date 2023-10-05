@@ -52,20 +52,25 @@
         const installButton = document.getElementById("installButton");
         installButton.style.display = 'block';
 
-        // Automatically show the install prompt when the page loads
-        deferredPrompt.prompt();
+        // Optional: You can set a delay before showing the install button
+        // setTimeout(() => {
+        //     installButton.style.display = 'block';
+        // }, 5000);
 
-        deferredPrompt.userChoice.then((choiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-                console.log('User accepted the A2HS prompt');
-            } else {
-                console.log('User dismissed the A2HS prompt');
-            }
-            deferredPrompt = null;
-            installButton.style.display = 'none';
+        installButton.addEventListener('click', (event) => {
+            deferredPrompt.prompt();
+
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted the A2HS prompt');
+                } else {
+                    console.log('User dismissed the A2HS prompt');
+                }
+                deferredPrompt = null;
+                installButton.style.display = 'none';
+            });
         });
     }
 </script>
-
 </body>
 </html>
