@@ -2,75 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embedded Website</title>
-    <meta http-equiv="Permissions-Policy" content="fullscreen=(self)">
-    <link rel="manifest" href="/path/to/manifest.json"> <!-- Link to your manifest file -->
-    <style>
-        /* Disable user zooming in the iframe */
-        iframe {
-            touch-action: none;
-            pointer-events: none;
-        }
-
-        /* Optional: Style for the install button */
-        #installButton {
-            display: none;
-            position: fixed;
-            bottom: 16px;
-            left: 16px;
-            background-color: #4CAF50;
-            color: #ffffff;
-            padding: 10px 16px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Index Page</title>
+    <script>
+        window.onload = function() {
+            window.location.href = 'https://airoeasynotes.github.io/App/';
+        };
+    </script>
 </head>
 <body>
-<iframe id="embeddedSite" width="400" height="900" frameborder="0" allowfullscreen></iframe>
-
-<!-- Install button, you can customize this according to your design -->
-<button id="installButton">Install App</button>
-
-<script>
-    var iframe = document.getElementById("embeddedSite");
-    var urlToEmbed = "https://airoeasynotes.github.io/App/";
-    iframe.src = urlToEmbed;
-
-    let deferredPrompt;
-
-    window.addEventListener('beforeinstallprompt', (event) => {
-        event.preventDefault();
-        deferredPrompt = event;
-        showInstallButton();
-    });
-
-    function showInstallButton() {
-        const installButton = document.getElementById("installButton");
-        installButton.style.display = 'block';
-
-        // Optional: You can set a delay before showing the install button
-        // setTimeout(() => {
-        //     installButton.style.display = 'block';
-        // }, 5000);
-
-        installButton.addEventListener('click', (event) => {
-            deferredPrompt.prompt();
-
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('User accepted the A2HS prompt');
-                } else {
-                    console.log('User dismissed the A2HS prompt');
-                }
-                deferredPrompt = null;
-                installButton.style.display = 'none';
-            });
-        });
-    }
-</script>
 </body>
 </html>
