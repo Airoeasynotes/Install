@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Index Page</title>
-    <script>
-        window.onload = function() {
-            window.location.href = 'https://airoeasynotes.github.io/App/';
-        };
-    </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>airoeasynotes</title>
 </head>
 <body>
+
+    <div id="embeddedSiteContainer"></div>
+
+    <script>
+        var websiteUrl = 'https://airoeasynotes.github.io/App/';
+
+        // Create an iframe element
+        var iframe = document.createElement('iframe');
+
+        // Set attributes for the iframe
+        iframe.src = websiteUrl;
+        iframe.width = "100%";
+        iframe.height = "830px"; // You can adjust the height as needed
+
+        // Append the iframe to the container div
+        document.getElementById('embeddedSiteContainer').appendChild(iframe);
+    </script>
+
 </body>
 </html>
